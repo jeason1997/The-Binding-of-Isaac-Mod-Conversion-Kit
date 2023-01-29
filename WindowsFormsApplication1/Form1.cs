@@ -210,9 +210,13 @@ namespace WindowsFormsApplication1
                 {
                     //var files = Directory.GetFiles("C:\\path", "*.png", SearchOption.AllDirectories);
 
+                  
+
                     foreach (string filename in files)
                         using (MagickImage image = new MagickImage(filename))
                         {
+                            image.Format = MagickFormat.Png32;
+
                             image.Write(string.Format("{0}.png", filename.Replace(Path.GetExtension(filename), "")));
                         }
                     foreach (string file in Directory.GetFiles(fbd.SelectedPath, "*.pcx", SearchOption.AllDirectories).Where(item => item.EndsWith(".pcx")))
